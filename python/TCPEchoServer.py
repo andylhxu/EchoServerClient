@@ -11,4 +11,5 @@ if __name__ == '__main__':
         sentence = connectionSocket.recv(1024).decode()
         capitalizedSentence = sentence.upper()
         connectionSocket.send(capitalizedSentence.encode())
+        print ("server handled: " + str(addr) + " with message: " + sentence)
         connectionSocket.close()

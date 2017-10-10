@@ -8,5 +8,5 @@ if __name__ == '__main__':
     while True:
         message, clientAddress = serverSocket.recvfrom(2048)
         modifiedMessage = message.decode().upper()
-        print('handled client: ' + str(clientAddress))
+        print('handled client: ' + str(clientAddress)+ ' with message: ' + message)
         serverSocket.sendto(modifiedMessage.encode(), clientAddress)
