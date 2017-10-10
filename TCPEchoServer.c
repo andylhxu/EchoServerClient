@@ -4,10 +4,17 @@
 #include <string.h>     /* for memset() */
 #include <sys/socket.h> /* for socket(), bind(), and connect() */
 #include <unistd.h>     /* for close() */
+#include <ctype.h>      /* for toupper() */
 
 #define MAXPENDING 5  /* Maximum outstanding connection requests */
 #define RCVBUFSIZE 32 /* Size of receive buffer */
 void DieWithError(char *errorMessage); /* Error handling function */
+
+void CapitalizeBuffer(char *ptr) {
+  do {
+    *ptr = toupper(*ptr);
+  } while (*ptr++);
+}
 
 void HandleTCPClient(int clntSocket) {
   char echoBuffer[RCVBUFSIZE]; /* Buffer for echo string */
@@ -20,6 +27,9 @@ void HandleTCPClient(int clntSocket) {
   /* Send received string and receive again until end of transmission */
   while (recvMsgSize > 0) /* zero indicates end of transmission */
   {
+    /* Capitalize the message */
+    CapitalizeBuffer(echoBuffer);
+
     /* Echo message back to client */
     if (send(clntSocket, echoBuffer, recvMsgSize, 0) != recvMsgSize)
       DieWithError("send() failed");
