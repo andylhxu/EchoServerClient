@@ -69,8 +69,7 @@ int main(int argc, char *argv[]) {
   echoServAddr.sin_port = htons(echoServPort);      /* Local port */
 
   /* Bind to the local address */
-  if (bind(servSock, (struct sockaddr *)&echoServAddr, sizeof(echoServAddr)) <
-      0)
+  if (bind(servSock, (struct sockaddr *)&echoServAddr, sizeof(echoServAddr)) < 0)
     DieWithError("bind() failed");
 
   /* Mark the socket so it will listen for incoming connections */
