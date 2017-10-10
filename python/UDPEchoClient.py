@@ -1,4 +1,4 @@
-from socket import *
+from socket import socket, AF_INET, SOCK_DGRAM
 
 if __name__ == '__main__':
     serverName = '127.0.0.1'

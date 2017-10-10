@@ -1,4 +1,4 @@
-from socket import *
+from socket import socket, AF_INET, SOCK_STREAM
 
 if __name__ == '__main__':
     serverPort = 12000
